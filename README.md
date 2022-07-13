@@ -1,16 +1,13 @@
 # four_in_a_row
 
-A new Flutter project.
+A new Flutter Four in a row game 
 
-## Getting Started
+the code inspired by doctor code and the next video
 
-This project is a starting point for a Flutter application.
+https://youtu.be/piDHdpWnoYI
 
-A few resources to get you started if this is your first Flutter project:
+the changes made on UI and mostly on logic to change it from 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+tic tac toe game into four in a row game 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
