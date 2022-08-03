@@ -94,9 +94,10 @@ class _GameScreenState extends State<GameScreen> {
                               game.board![chosenIndex] = lastValue;
                               rowFilled[chosenCol]--;
                               print(rowFilled);
+                              print(chosenRow);
                               turn++;
-                              gameOver = game.winnerCheck(lastValue,
-                                  6 - chosenRow, chosenCol, gameScoreBoard);
+                              gameOver = game.winnerCheck(lastValue, chosenRow,
+                                  chosenCol, gameScoreBoard);
 
                               if (gameOver) {
                                 gameResult =

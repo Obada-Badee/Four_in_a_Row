@@ -23,7 +23,7 @@ class Game {
     int count = 0;
 
 // Horizontal check
-    for (int i = 0; i < maxCol; i++) {
+    for (int i = 0; i <= maxCol; i++) {
       if (gameScoreBoard[row][i] == score) {
         count++;
       } else {
@@ -33,7 +33,7 @@ class Game {
       if (count >= 4) return true;
     }
 //Vertical check
-    for (int i = 0; i < maxRow; i++) {
+    for (int i = 0; i <= maxRow; i++) {
       if (gameScoreBoard[i][col] == score) {
         count++;
       } else {
@@ -43,38 +43,73 @@ class Game {
       if (count >= 4) return true;
     }
     count = 0;
-// 4 in a row diagonally
-    for (int i = col + 1, j = row + 1; i < maxRow && j < maxCol; i++, j++) {
-      if (gameScoreBoard[j][i] != score) {
-        count = 1;
-        break;
+
+////////
+    for (int rowStart = 0; rowStart <= maxRow - 4; rowStart++) {
+      count = 0;
+      for (int row2 = rowStart, col2 = 0;
+          row2 <= maxRow && col2 <= maxCol;
+          row2++, col2++) {
+        if (gameScoreBoard[row2][col2] == score) {
+          count++;
+          if (count >= 4) {
+            return true;
+          }
+        } else {
+          count = 0;
+        }
       }
-      count++;
-    }
-// 4 in a row diagonally
-    for (int i = col - 1, j = row - 1; i >= 0 && j >= 0; i--, j--) {
-      if (gameScoreBoard[j][i] != score) {
-        count = 1;
-        break;
-      }
-      count++;
-    }
-// 4 in a row diagonally
-    for (int i = col + 1, j = row - 1; i < maxRow && j >= 0; i++, j--) {
-      if (gameScoreBoard[j][i] != score) {
-        count = 1;
-        break;
-      }
-      count++;
     }
 
-    for (int i = col - 1, j = row + 1; i >= 0 && j < maxCol; i--, j++) {
-      // 4 in a row diagonally
-      if (gameScoreBoard[j][i] != score) {
-        count = 1;
-        break;
+// top-left to bottom-right - red diagonals
+    for (int colStart = 1; colStart <= maxCol - 4; colStart++) {
+      count = 0;
+      for (int row2 = 0, col2 = colStart;
+          row2 <= maxRow && col2 <= maxCol;
+          row2++, col2++) {
+        if (gameScoreBoard[row2][col2] == score) {
+          count++;
+          if (count >= 4) {
+            return true;
+          }
+        } else {
+          count = 0;
+        }
       }
-      count++;
+    }
+
+    ////////THE OTHER SIDE OF THE   GREEN DIAGONAL
+    for (int rowStart = maxRow; rowStart > maxRow - 4; rowStart--) {
+      count = 0;
+      for (int row2 = rowStart, col2 = 0;
+          row2 >= 0 && col2 <= maxCol;
+          row2--, col2++) {
+        if (gameScoreBoard[row2][col2] == score) {
+          count++;
+          if (count >= 4) {
+            return true;
+          }
+        } else {
+          count = 0;
+        }
+      }
+    }
+
+// top-left to bottom-right - red diagonals - THE OTHER SIDE
+    for (int colStart = 1; colStart <= maxCol - 4; colStart++) {
+      count = 0;
+      for (int row2 = maxRow, col2 = colStart;
+          row2 >= 0 && col2 <= maxCol;
+          row2--, col2++) {
+        if (gameScoreBoard[row2][col2] == score) {
+          count++;
+          if (count >= 4) {
+            return true;
+          }
+        } else {
+          count = 0;
+        }
+      }
     }
 
     if (count >= 4) {
