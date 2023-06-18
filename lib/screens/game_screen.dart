@@ -30,9 +30,6 @@ class _GameScreenState extends State<GameScreen> {
     // TODO: implement initState
     super.initState();
     game.board = Game.initGameBoard();
-    print(game.board);
-    print(rowFilled);
-    print(gameScoreBoard);
   }
 
   @override
@@ -77,8 +74,6 @@ class _GameScreenState extends State<GameScreen> {
                             setState(() {
                               game.board![chosenIndex] = lastValue;
                               rowFilled[chosenCol]--;
-                              print(rowFilled);
-                              print(chosenRow);
                               turn++;
                               gameOver = game.winnerCheck(lastValue, chosenRow,
                                   chosenCol, gameScoreBoard);
@@ -111,7 +106,7 @@ class _GameScreenState extends State<GameScreen> {
                         game.board![index],
                         style: TextStyle(
                           color: game.board![index] == "X"
-                              ? Colors.blue
+                              ? Colors.black
                               : Colors.pink,
                           fontSize: 32.0,
                         ),
